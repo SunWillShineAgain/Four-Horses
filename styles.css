@@ -606,7 +606,7 @@ span.red,
 
 @media (max-width: 767px) {
 	.header {
-		background-position-x: 64%;
+		background-image: url(assets/images/header-bg-mobile.png);
 	}
 
 	.limited-width {
