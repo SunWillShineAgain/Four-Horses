@@ -38,7 +38,8 @@ document.addEventListener('DOMContentLoaded', () => {
 		const sliderWidth = document.querySelector('.stage__slider').clientWidth // определение ширины слайда при изменении ширины экрана
 		stageSlider.style.transform = `translateX(0px)` // сбрасывание на первый слайд
 
-		const currentSize = screen.width > 991 ? template.large : template.small
+		const currentSize =
+			window.innerWidth > 991 ? template.large : template.small
 		const slidesCount = currentSize.length
 
 		const drawDots = () => {
@@ -52,7 +53,7 @@ document.addEventListener('DOMContentLoaded', () => {
 		drawDots()
 
 		const makeDotActive = value => {
-			if (screen.width > 991) return
+			if (window.innerWidth > 991) return
 			dotsContainer.childNodes.forEach(dot => dot.classList.remove('active'))
 			dotsContainer.childNodes[value - 1].classList.add('active')
 		} // активный слайд в навигации
@@ -81,7 +82,9 @@ document.addEventListener('DOMContentLoaded', () => {
 			} // отрисовка слайда
 		}
 
-		screen.width > 991 ? drawCards(template.large) : drawCards(template.small) // определение количества слайдов для отрисовки
+		window.innerWidth > 991
+			? drawCards(template.large)
+			: drawCards(template.small) // определение количества слайдов для отрисовки
 
 		let offset = 0
 		let currentSlide = 1
@@ -158,11 +161,11 @@ document.addEventListener('DOMContentLoaded', () => {
 		participantWrap.style.transform = `translateX(0px)` // сбрасывание на начальный экран (экран == количество карточек в одном слайде)
 		let SLIDESPERVIEW = value // количество карточек на экране
 
-		if (screen.width < 1200) {
+		if (window.innerWidth < 1200) {
 			SLIDESPERVIEW = 2
 		}
 
-		if (screen.width < 767) {
+		if (window.innerWidth < 767) {
 			SLIDESPERVIEW = 1
 		}
 
@@ -232,11 +235,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
 	initParticipantSlider()
 	window.addEventListener('resize', () => {
-		if (this.width < 1200) {
+		if (window.innerWidth < 1200) {
 			initParticipantSlider(breakpoints.xl)
 			return
 		}
-		if (this.width < 576) {
+		if (window.innerWidth < 576) {
 			initParticipantSlider(breakpoints.md)
 			return
 		}
